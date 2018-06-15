@@ -421,7 +421,7 @@ stream_tweets2 <- function(..., dir = NULL, append = FALSE) {
 
   ## restart and continue stream until reqtime
   while (Sys.time() <= reqtime) {
-    dots[["file_name"]] <- file.path(dir, paste0(file_name, "-", i, ".json"))
+    dots[["file_name"]] <- file.path(dir, sprintf("%s-%09.0f.json", file_name, i))
     rt[[length(rt) + 1L]] <- do.call("stream_tweets", dots)
     i <- i + 1L
     dots[["timeout"]] <- ceiling(as.numeric(reqtime - Sys.time(), "secs"))
