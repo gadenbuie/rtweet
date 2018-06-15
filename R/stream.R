@@ -483,6 +483,6 @@ parse_streamlimit <- function(x) {
 }
 
 stream_dir <- function() {
-  timestamp <- gsub("\\s|\\:|\\-", "", substr(Sys.time(), 1, 19))
+  timestamp <- strftime(Sys.time(), "%Y%m%d%H%M%S")
   paste0("stream-", timestamp)
 }
